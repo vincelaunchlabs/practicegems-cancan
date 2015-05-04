@@ -12,7 +12,7 @@ class AnswersController <ApplicationController
 
 	def destroy
 		@question 	= Question.find(params[:question_id])
-		@answer 	= @questions.answers.find(params[:id]).destroy
+		@answer 	= @question.answers.find(params[:id]).destroy
 		redirect_to question_url
 
 	end
@@ -21,7 +21,7 @@ class AnswersController <ApplicationController
 
 	 # Never trust parameters from the scary internet, only allow the white list through.
 	 def answers_params
-	 	params.require(:answer).perrmit(:content)
+	 	params.require(:answer).permit(:content)
 	 end
 
 end
